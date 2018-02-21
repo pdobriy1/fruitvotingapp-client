@@ -1,0 +1,95 @@
+<div class="container">
+  <div class="row col-md-12">
+    <div class="col-md-6 col-sm-6">
+      <table>
+        <thead class="thead-inverse"  style="width: 100%">
+          <tr>
+            <th class="text-center">Fruit</th>
+            <th class="text-center"></th>
+          </tr>
+        </thead>
+        <tbody  style="width: 100%">
+
+        <tr *ngFor="let fruitList of fruitList">
+          <td class="text-center" style="width: 200px;">{{fruitList[1]}}</td>
+          <td class="text-center" style="width: 200px;"><button (click)="fruitVoteById(fruitList[0],fruitList[1])" *ngIf="!disableVote" >
+            Vote !!</button></td>
+        </tr>
+
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-6 col-sm-6">
+      <form (ngSubmit) = "submitStudentDetials(form)" #form = "ngForm">
+        <div id="user_data">
+          <div class="form-group">
+            <label for="firstname">First Name</label>
+            <input
+                type="text"
+                id="firstname"
+                class="form-control"
+                ngModel
+                name="firstname"
+                required
+                #firstname ="ngModel">
+            <span class="help-block" *ngIf="!firstname.valid && firstname.touched">Please enter First Name!</span>
+
+          </div>
+
+          <div class="form-group">
+            <label for="lastname">Last Name</label>
+            <input
+              type="text"
+              id="lastname"
+              class="form-control"
+              ngModel
+              name="lastname"
+              required
+              #lastname="ngModel">
+            <span class="help-block" *ngIf="!lastname.valid && lastname.touched">Please enter Last Name!</span>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              class="form-control"
+              ngModel
+              name="email"
+              required
+              email
+              #email="ngModel"
+
+            >
+              <span class="help-block" *ngIf="!email.valid && email.touched">Please enter email!</span>
+              <span class="help-block" >{{emailAlreadyExist}}</span>
+          </div>
+
+          <div class="form-group">
+            <label for="fruitid">Fruit Vote</label>
+            <input  disabled = "disableVote"
+              type="text"
+              id="fruitid"
+              class="form-control"
+
+              [ngModel] = "selectedFruitNameByStudent"
+              name="fruitid"
+              required
+              #fruitId = "ngModel"
+            >
+            <span class="help-block" >{{voteEmpty}}</span>
+          </div>
+
+        </div>
+        <button class="btn btn-primary" type="submit" [disabled]="!form.valid ">Submit</button>
+        <button class="btn btn-danger" type="reset">Cancel</button>
+    </form>
+  </div>
+
+  </div>
+  <div class="row col-md-12">
+    <button class="btn btn-primary" routerLink="/checkvote">Already Voted! Check?</button>
+  </div>
+</div>
+

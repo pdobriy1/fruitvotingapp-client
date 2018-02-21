@@ -1,0 +1,30 @@
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td{
+  border: 1px solid #dddddd;
+  border-top: 1px solid #dddddd;
+  text-align: center;
+  padding: 8px;
+  width: 100%;
+}
+
+th{
+  border: 1px solid #dddddd;
+  border-top: 1px solid #dddddd;
+  text-align: center;
+  padding: 8px;
+  width: 50%;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+input.ng-invalid.ng-touched{
+  border: 1px solid crimson;
+}
